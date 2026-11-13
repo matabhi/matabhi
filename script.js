@@ -131,7 +131,7 @@ function toggle(index) {
     requestAnimationFrame(() => node.classList.add('revealed'));
     // Mask first, then width expansion; typing begins just after widening starts.
     later(node, () => node.classList.add('open'), maskTime);
-    later(node, () => typeTitle(node, projects[index].title), maskTime + (reducedMotion.matches ? 0 : 220));
+    later(node, () => typeTitle(node, projects[index].title), maskTime + expandTime);
   } else {
     // Reverse: shrink images and reflow text, THEN retract mask upward.
     node.classList.remove('open');
