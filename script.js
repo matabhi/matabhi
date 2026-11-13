@@ -71,29 +71,65 @@ function hidePreview(){preview.classList.remove('visible')}
 
 // Wheel over expanded project content = native-feeling vertical scroll.
 // Wheel anywhere else = inertial horizontal timeline movement.
-function animate(){raf=0;if(Math.abs(velocity)<.15){velocity=0;return}
-  const current=viewport.scrollLeft;viewport.scrollLeft=clamp(current+velocity,0,maxScroll());
-  if(viewport.scrollLeft===current)velocity=0;
-  velocity*=.88;
-  if(velocity!==0)raf=requestAnimationFrame(animate);
-}
-viewport.addEventListener('wheel',e=>{
-  const panel=e.target.closest('.project.open .project-detail');
-  if(panel){
-    // Keep scroll behavior vertical even on trackpads that predominantly emit deltaX.
-    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){
-      e.preventDefault();panel.scrollTop+=e.deltaX;
-    }
-    // Native deltaY scrolling remains in the expanded panel; never move timeline.
+
+function animate() {
+  raf = 0;
+  if (Math.abs(velocity) < 0.15) {
+    velocity = 0;
     return;
   }
-  e.preventDefault();hidePreview();
-  const modifier=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;
-  const delta=(Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY)*modifier;
-  if(reducedMotion.matches){viewport.scrollLeft=clamp(viewport.scrollLeft+delta,0,maxScroll());return}
-  velocity=clamp(velocity+delta*.19,-64,64);
-  if(!raf)raf=requestAnimationFrame(animate);
-},{passive:false});
+
+  const current = viewport.scrollLeft;
+  viewport.scrollLeft = clamp(
+    current + velocity,
+    0,
+    maxScroll()
+  );
+
+  if (viewport.scrollLeft === current) velocity = 0;
+
+  // Lower friction factor = quicker slowdown.
+  // Higher factor = longer, heavier glide.
+  velocity *= 0.94;
+
+  if (velocity !== 0) raf = requestAnimationFrame(animate);
+}
+
+viewport.addEventListener('wheel', e => {
+  const panel = e.target.closest('.project.open .project-detail');
+
+  if (panel) {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault();
+      panel.scrollTop += e.deltaX;
+    }
+    return;
+  }
+
+  e.preventDefault();
+  hidePreview();
+
+  const modifier = e.deltaMode === 1 ? 16 :
+                   e.deltaMode === 2 ? innerHeight : 1;
+  const delta = (
+    Math.abs(e.deltaX) > Math.abs(e.deltaY)
+      ? e.deltaX : e.deltaY
+  ) * modifier;
+
+  if (reducedMotion.matches) {
+    viewport.scrollLeft = clamp(
+      viewport.scrollLeft + delta,
+      0,
+      maxScroll()
+    );
+    return;
+  }
+
+  velocity = clamp(velocity + delta * 0.10, -40, 40);
+
+  if (!raf) raf = requestAnimationFrame(animate);
+}, { passive: false });
+
 
 // Mouse drag for desktop, native swipe on phones.
 let drag=null,blockClick=false;
