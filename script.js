@@ -230,3 +230,51 @@ const about=document.querySelector('#about');const aboutBtn=document.querySelect
 function setAbout(open){about.hidden=!open;aboutBtn.setAttribute('aria-expanded',String(open));aboutBtn.textContent=open?'ABOUT −':'ABOUT +';hidePreview()}
 aboutBtn.addEventListener('click',()=>setAbout(about.hidden));document.querySelector('#aboutClose').addEventListener('click',()=>setAbout(false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){setAbout(false);if(openId!==-1)toggle(openId)}});
+
+/* ========================================
+   VERTICAL SCROLLING INSIDE OPEN COLUMNS
+   ======================================== */
+
+viewport.addEventListener('wheel', (event) => {
+
+  // Detect whether the cursor is over an open project.
+  const column = event.target.closest('.project.open');
+
+  if (!column) return;
+
+  // Stop horizontal momentum while inside the column.
+  stopMomentum();
+  hidePreview();
+
+  // Prevent the original horizontal wheel handler
+  // from processing this event.
+  event.stopImmediatePropagation();
+
+  // Mouse-wheel vertical scrolling remains native.
+  // Convert horizontal trackpad gestures to vertical
+  // movement within the expanded column.
+  if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+    event.preventDefault();
+
+    const modifier =
+      event.deltaMode === 1 ? 16 :
+      event.deltaMode === 2 ? innerHeight : 1;
+
+    column.scrollTop += event.deltaX * modifier;
+  }
+
+}, { capture: true, passive: false });
+
+
+// Start every expanded project at the top.
+projectsEl.addEventListener('click', (event) => {
+  const trigger = event.target.closest('.project-trigger');
+
+  if (!trigger) return;
+
+  const opened = trigger.closest('.project.open');
+
+  if (opened) {
+    opened.scrollTop = 0;
+  }
+});
