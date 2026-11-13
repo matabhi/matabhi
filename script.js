@@ -70,53 +70,104 @@ function positionPreview(e){const w=preview.offsetWidth||260,h=preview.offsetHei
 function hidePreview(){preview.classList.remove('visible')}
 
 // Wheel over expanded project content = native-feeling vertical scroll.
-// Wheel anywhere else = inertial horizontal timeline movement.
 
-function animate() {
+/* ========================================
+   WEIGHTED HORIZONTAL SCROLLING
+   ======================================== */
+
+// Adjust these to change the scrolling feel.
+const SCROLL_SETTINGS = {
+  sensitivity: 1.08,  // Distance per wheel movement
+  spring: 0.012,      // Lower = heavier/slower response
+  damping: 0.79       // Higher = more glide
+};
+
+let targetX = viewport.scrollLeft;
+let lastFrame = 0;
+
+function stopMomentum() {
+  if (raf) cancelAnimationFrame(raf);
+
   raf = 0;
-  if (Math.abs(velocity) < 0.15) {
-    velocity = 0;
-    return;
-  }
+  velocity = 0;
+  lastFrame = 0;
+  targetX = viewport.scrollLeft;
+}
 
-  const current = viewport.scrollLeft;
-  viewport.scrollLeft = clamp(
-    current + velocity,
+function animate(now) {
+  raf = 0;
+
+  const dt = lastFrame
+    ? clamp((now - lastFrame) / 16.67, 0.5, 2)
+    : 1;
+
+  lastFrame = now;
+
+  targetX = clamp(targetX, 0, maxScroll());
+
+  const distance = targetX - viewport.scrollLeft;
+
+  // Spring force pulls the timeline toward the target.
+  velocity = (
+    velocity + distance * SCROLL_SETTINGS.spring * dt
+  ) * Math.pow(SCROLL_SETTINGS.damping, dt);
+
+  const next = clamp(
+    viewport.scrollLeft + velocity * dt,
     0,
     maxScroll()
   );
 
-  if (viewport.scrollLeft === current) velocity = 0;
+  viewport.scrollLeft = next;
 
-  // Lower friction factor = quicker slowdown.
-  // Higher factor = longer, heavier glide.
-  velocity *= 0.94;
+  // Finish when the motion is almost imperceptible.
+  if (
+    Math.abs(targetX - next) < 0.45 &&
+    Math.abs(velocity) < 0.13
+  ) {
+    viewport.scrollLeft = targetX;
+    velocity = 0;
+    lastFrame = 0;
+    return;
+  }
 
-  if (velocity !== 0) raf = requestAnimationFrame(animate);
+  raf = requestAnimationFrame(animate);
 }
 
+// Wheel scrolling
 viewport.addEventListener('wheel', e => {
-  const panel = e.target.closest('.project.open .project-detail');
+
+  // Preserve vertical scrolling within expanded projects.
+  const panel = e.target.closest(
+    '.project.open .project-detail'
+  );
 
   if (panel) {
+    stopMomentum();
+
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
       e.preventDefault();
       panel.scrollTop += e.deltaX;
     }
+
     return;
   }
 
   e.preventDefault();
   hidePreview();
 
-  const modifier = e.deltaMode === 1 ? 16 :
-                   e.deltaMode === 2 ? innerHeight : 1;
+  const modifier =
+    e.deltaMode === 1 ? 16 :
+    e.deltaMode === 2 ? innerHeight : 1;
+
   const delta = (
     Math.abs(e.deltaX) > Math.abs(e.deltaY)
-      ? e.deltaX : e.deltaY
+      ? e.deltaX
+      : e.deltaY
   ) * modifier;
 
   if (reducedMotion.matches) {
+    stopMomentum();
     viewport.scrollLeft = clamp(
       viewport.scrollLeft + delta,
       0,
@@ -125,12 +176,33 @@ viewport.addEventListener('wheel', e => {
     return;
   }
 
-  velocity = clamp(velocity + delta * 0.10, -40, 40);
+  if (!raf) {
+    targetX = viewport.scrollLeft;
+    lastFrame = 0;
+  }
 
-  if (!raf) raf = requestAnimationFrame(animate);
+  // Move the target, not the timeline directly.
+  targetX = clamp(
+    targetX + delta * SCROLL_SETTINGS.sensitivity,
+    0,
+    maxScroll()
+  );
+
+  if (
+    !raf &&
+    Math.abs(targetX - viewport.scrollLeft) > 0.1
+  ) {
+    raf = requestAnimationFrame(animate);
+  }
+
 }, { passive: false });
 
-
+// Stop existing momentum when the user clicks or drags.
+viewport.addEventListener(
+  'pointerdown',
+  stopMomentum,
+  { capture: true }
+);
 // Mouse drag for desktop, native swipe on phones.
 let drag=null,blockClick=false;
 viewport.addEventListener('pointerdown',e=>{
