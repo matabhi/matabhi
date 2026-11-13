@@ -7,8 +7,8 @@
   --footer-h:61px;
   --type-body:15px;
   --type-large:30px;
-  --expand-ms:1800ms;
-  --mask-ms:1000ms;
+  --expand-ms:2200ms;
+  --mask-ms:2200ms;
 }
 * {box-sizing:border-box}
 html,body {margin:0;width:100%;height:100%;overflow:hidden}
