@@ -1,0 +1,131 @@
+/* Portfolio 08 — fixed project introductions and independently scrolling images. */
+:root {
+  --paper:#f6f5f0;
+  --ink:#191919;
+  --soft:#62625f;
+  --red:#d6372d;
+  --footer-h:61px;
+  --type-body:15px;
+  --type-large:30px;
+  --mask-ms:700ms;
+  --expand-ms:2200ms;
+}
+* {box-sizing:border-box}
+html,body {margin:0;width:100%;height:100%;overflow:hidden}
+body {background:var(--paper);color:var(--ink);font:var(--type-body)/1.43 Arial,Helvetica,sans-serif}
+button {font:inherit;color:inherit;cursor:pointer}
+button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
+#viewport {
+  height:calc(100dvh - var(--footer-h));
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+  overscroll-behavior-x:contain;overflow-anchor:none;touch-action:auto;cursor:grab;
+}
+#viewport::-webkit-scrollbar {display:none}
+#viewport.dragging {cursor:grabbing;user-select:none}
+.timeline {
+  width:max-content;min-width:100%;height:100%;display:flex;align-items:stretch;
+  padding:clamp(32px,6vh,75px) 8vw 0 5vw;
+}
+.opening {
+  width:clamp(320px,37vw,620px);flex:none;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding-right:clamp(20px,3vw,48px);
+}
+.intro-index,.intro-directions,.project-number,.project-scroll figcaption,
+.footer button,.percent,.about-close,.ending span {font-family:'Courier New',monospace;letter-spacing:-.025em}
+.intro-index {margin-bottom:28px}
+.opening p {font-size:var(--type-large);line-height:1.16;letter-spacing:-.055em;margin:0}
+.intro-directions {margin-top:35px;color:var(--soft)}
+.projects {height:100%;display:flex;align-items:stretch;gap:clamp(16px,2.5vw,36px)}
+.project {
+  width:clamp(245px,25vw,410px);height:100%;min-height:0;
+  flex:none;display:flex;flex-direction:column;
+  overflow:hidden;overflow-anchor:none;
+  transition:width var(--expand-ms) cubic-bezier(.25,.1,.25,1);
+}
+.project.open {width:min(78vw,960px)}
+/* This entire header remains stationary; only .project-scroll below it scrolls. */
+.project-header {
+  position:relative;z-index:2;display:grid;
+  grid-template-columns:66px minmax(0,1fr);
+  gap:8px;width:100%;flex:none;background:var(--paper);
+  transition:grid-template-columns var(--expand-ms) cubic-bezier(.25,.1,.25,1);
+}
+.project.open .project-header {grid-template-columns:min(22%,210px) minmax(0,1fr)}
+.project-number {
+  align-self:start;justify-self:start;border:0;background:none;
+  color:var(--ink);font-size:var(--type-large);line-height:1.1;
+  padding:0 12px 0 0;margin:0;text-align:left;white-space:nowrap;
+}
+.project-number:hover,.project-number:focus-visible {color:var(--red)}
+.project-copy {min-width:0;cursor:pointer}
+.project.is-active .project-copy {cursor:default}
+.project-title {display:none;font-size:var(--type-body);line-height:1.4;font-weight:600;margin:0 0 20px;min-height:1.4em;white-space:normal}
+.project.is-active .project-title {display:block}
+.project-title.typing::after {content:'';display:inline-block;width:1px;height:.9em;background:currentColor;margin-left:2px;vertical-align:-.08em}
+.excerpt {width:100%;margin:0;font-size:var(--type-body);line-height:1.44;letter-spacing:-.015em;overflow-wrap:break-word}
+/* Reveal is a masked region below the fixed introductory header. */
+.project-reveal {
+  flex:1 1 auto;min-height:0;width:100%;overflow:hidden;
+  clip-path:inset(0 0 100% 0);
+  transition:clip-path var(--mask-ms) cubic-bezier(.42,0,.58,1);
+  pointer-events:none;
+}
+.project-reveal[hidden] {display:none!important}
+.project.revealed .project-reveal {clip-path:inset(0 0 0 0);pointer-events:auto}
+.project-scroll {
+  width:100%;height:100%;min-height:0;overflow-x:hidden;overflow-y:auto;
+  padding:24px 0 96px;scrollbar-width:none;overscroll-behavior-y:contain;
+  touch-action:pan-y;cursor:default;
+}
+.project-scroll::-webkit-scrollbar {display:none}
+.project-scroll figure {margin:0 0 40px}
+.project-scroll figure img {display:block;width:100%;max-width:none;height:auto;object-fit:contain}
+.project-scroll figcaption {font-size:var(--type-body);color:var(--soft);margin-top:10px}
+.project-scroll .detail-note {font-size:var(--type-body);line-height:1.5;width:100%;margin:0 0 42px}
+.ending {width:38vw;min-width:300px;flex:none;display:flex;flex-direction:column;justify-content:flex-start;gap:20px}
+.ending p {font-size:var(--type-large);line-height:1.15;letter-spacing:-.055em;margin:0}
+.footer {
+  height:var(--footer-h);position:fixed;bottom:0;left:0;right:0;
+  display:flex;gap:22px;align-items:center;padding:0 3vw;
+  background:var(--paper);z-index:10;
+}
+.footer button {border:0;background:transparent;padding:7px 0;white-space:nowrap;font-size:var(--type-body)}
+.name {font-weight:bold}
+.about-toggle {margin-right:20px}
+.footer button:hover {text-decoration:underline}
+.meter {height:1px;background:#cbc9c3;flex:1;min-width:30px;overflow:hidden}
+.meter-fill {width:0;height:100%;background:var(--ink)}
+.percent {min-width:48px;text-align:right;font-size:var(--type-body)}
+.preview {
+  position:fixed;left:0;top:0;width:clamp(175px,23vw,340px);
+  z-index:30;pointer-events:none;display:none;filter:none;box-shadow:none;border:0;transform:none;
+}
+.preview.visible {display:block}
+.preview img {display:block;width:100%;height:auto;max-height:260px;object-fit:contain;border:0;box-shadow:none;transform:none}
+.about[hidden] {display:none}
+.about {
+  position:fixed;left:2vw;bottom:var(--footer-h);width:min(460px,94vw);
+  background:var(--paper);z-index:50;padding:30px 34px;box-shadow:0 0 0 1px var(--ink);
+}
+.about p {font-size:var(--type-body);line-height:1.5;margin:25px 0}
+.about .about-note {color:var(--soft)}
+.about-close {background:none;border:0;font-size:var(--type-body)}
+@media(max-width:760px) {
+  :root {--footer-h:58px}
+  .timeline {padding:36px 24px 0}
+  .opening {width:80vw;padding-right:10vw}
+  .projects {gap:18px}
+  .project {width:73vw}
+  .project.open {width:90vw}
+  .project-header {grid-template-columns:46px minmax(0,1fr);gap:6px}
+  .project.open .project-header {grid-template-columns:24% minmax(0,1fr)}
+  .footer {padding:0 12px;gap:10px}
+  .footer .about-toggle {margin-right:0}
+  .preview {display:none!important}
+  .ending {width:75vw}
+}
+@media(prefers-reduced-motion:reduce) {
+  .project,.project-header,.project-reveal {transition:none!important}
+  .project-title.typing::after {display:none}
+}
