@@ -90,6 +90,40 @@ projects.forEach((p, i) => {
 });
 
 function typeTitle(node, title) {
+   
+function eraseTitle(node) {
+  const typed = node.querySelector('.typed-title');
+  const heading = node.querySelector('.project-title');
+  const chars = Array.from(typed.textContent);
+
+  // Instant deletion for reduced-motion preferences.
+  if (reducedMotion.matches) {
+    typed.textContent = '';
+    heading.classList.remove('typing');
+    return 0;
+  }
+
+  const deleteSpeed = 35; // Milliseconds per letter
+  const duration = chars.length * deleteSpeed;
+
+  heading.classList.add('typing');
+
+  // Delete characters one at a time, from right to left.
+  chars.forEach((char, i) => {
+    later(node, () => {
+      typed.textContent = chars
+        .slice(0, chars.length - i - 1)
+        .join('');
+    }, (i + 1) * deleteSpeed);
+  });
+
+  later(node, () => {
+    heading.classList.remove('typing');
+  }, duration);
+
+  return duration;
+}
+
   const typed = node.querySelector('.typed-title');
   const heading = node.querySelector('.project-title');
   const chars = Array.from(title);
@@ -132,21 +166,35 @@ function toggle(index) {
     // Mask first, then width expansion; typing begins just after widening starts.
     later(node, () => node.classList.add('open'), maskTime);
     later(node, () => typeTitle(node, projects[index].title), maskTime + expandTime);
+  
   } else {
-    // Reverse: shrink images and reflow text, THEN retract mask upward.
-    node.classList.remove('open');
-    panel.inert = true;
-    later(node, () => node.classList.remove('revealed'), expandTime);
+
+    // STEP 1: Delete the title before contracting.
+    const eraseTime = eraseTitle(node);
+
+    // STEP 2: Contract the column after deletion.
+    later(node, () => {
+      node.classList.remove('open');
+    }, eraseTime);
+
+    // STEP 3: Retract the mask after contraction.
+    later(node, () => {
+      node.classList.remove('revealed');
+      panel.inert = true;
+    }, eraseTime + expandTime);
+
+    // STEP 4: Finish closing and reset.
     later(node, () => {
       panel.hidden = true;
       node.classList.remove('is-active');
       node.querySelector('.project-scroll').scrollTop = 0;
       node.querySelector('.typed-title').textContent = '';
-      node.querySelector('.project-title').classList.remove('typing');
-    }, expandTime + maskTime + 45);
+      node.querySelector('.project-title')
+        .classList.remove('typing');
+    }, eraseTime + expandTime + maskTime + 45);
+
   }
 }
-
 function showPreview(e, src) {
   previewImage.src = src;
   positionPreview(e);
