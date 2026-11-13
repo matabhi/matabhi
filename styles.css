@@ -189,3 +189,187 @@
     transition: none;
   }
 }
+
+/* ========================================
+   V5 — MASKED PROJECT EXPANSION
+   ======================================== */
+
+:root {
+  --reveal-time: 600ms;
+  --expand-time: 2200ms;
+}
+
+/* Keep horizontal position stable */
+#viewport {
+  overflow-anchor: none;
+}
+
+/* Align timeline toward top */
+.timeline {
+  padding-top: clamp(32px, 6vh, 75px);
+}
+
+.opening,
+.ending {
+  justify-content: flex-start;
+}
+
+/* Tighter project spacing */
+.projects {
+  gap: clamp(16px, 2.5vw, 36px);
+}
+
+/* Default collapsed project */
+.project {
+  overflow: hidden;
+  padding-right: 0;
+
+  transition:
+    width var(--expand-time)
+    cubic-bezier(.25, .1, .25, 1);
+
+  transition-delay: 0ms;
+}
+
+/* Opened project:
+   Reveal mask FIRST, then expand width */
+.project.open {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0;
+
+  scrollbar-width: none;
+  transition-delay: var(--reveal-time);
+}
+
+/* Hide the vertical scrollbar */
+.project.open::-webkit-scrollbar {
+  display: none;
+}
+
+/* Keep original content positioned consistently */
+.project-summary,
+.project.open .project-summary {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding: 0;
+  width: 100%;
+}
+
+/* GIF and images resize with the column */
+.loop,
+.project.open .loop {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Text stays the same size but reflows */
+.excerpt,
+.project.open .excerpt {
+  width: 100%;
+  max-width: 100%;
+
+  font-size: clamp(15px, 1.38vw, 19px);
+  line-height: 1.37;
+  margin-top: 20px;
+}
+
+/* Closed detail: hidden behind mask */
+.project-detail,
+.project.open .project-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  flex: none;
+  align-self: stretch;
+
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+
+  /* On closing, wait for width to shrink
+     before retracting the mask */
+  transition:
+    grid-template-rows var(--reveal-time)
+      ease var(--expand-time),
+    clip-path var(--reveal-time)
+      ease var(--expand-time),
+    opacity 180ms ease var(--expand-time);
+}
+
+/* Open the mask before expanding width */
+.project.open .project-detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+
+  transition-delay: 0ms;
+}
+
+/* Inner content stays clipped during reveal */
+.detail-mask-inner {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.detail-mask-inner .detail-top {
+  margin-top: 40px;
+}
+
+.detail-mask-inner > :last-child {
+  margin-bottom: 96px;
+}
+
+/* Documentation images use full column width */
+.project-detail figure img {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Allow detailed text to fill available width */
+.project-detail .detail-note {
+  max-width: none;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .timeline {
+    padding-top: 36px;
+  }
+
+  .projects {
+    gap: 18px;
+  }
+
+  .project.open .loop {
+    width: 100%;
+    height: auto;
+  }
+
+  .project.open .excerpt {
+    font-size: 16px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .project,
+  .project-detail,
+  .project.open .project-detail {
+    transition: none;
+  }
+}
