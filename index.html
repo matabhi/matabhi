@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Architecture, images, objects, and experiments — portfolio timeline prototype.">
+  <title>Abhi Nursilo — Work / Prototype 02</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="viewport" tabindex="0" aria-label="Horizontal timeline of projects; scroll or swipe to explore">
+    <div id="timeline" class="timeline">
+      <section class="opening" aria-label="Introduction">
+        <span class="intro-index">AN / 00</span>
+        <p>Architecture, images, objects, and things made along the way.</p>
+        <span class="intro-directions">SCROLL TO EXPLORE &nbsp; →</span>
+      </section>
+      <div id="projects" class="projects"></div>
+      <div class="ending"><span>END OF INDEX.</span><p>More to come.</p></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <button class="name" id="reset" aria-label="Back to start">ABHI NURSILO</button>
+    <button class="about-toggle" id="aboutBtn" aria-controls="about" aria-expanded="false">ABOUT +</button>
+    <div class="meter" aria-label="Timeline progress"><div class="meter-fill" id="meter"></div></div>
+    <span class="percent" id="percent" aria-live="off">00%</span>
+  </footer>
+  <div id="preview" class="preview" aria-hidden="true"><img id="previewImage" src="" alt=""></div>
+  <section id="about" class="about" hidden aria-label="About this portfolio">
+    <button id="aboutClose" class="about-close">CLOSE ×</button>
+    <p>A portfolio of architecture, representation, and things made. This is a working prototype with placeholder imagery and descriptions.</p>
+    <p class="about-note">Replace with a short biography, resume, and contact information before publishing.</p>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
