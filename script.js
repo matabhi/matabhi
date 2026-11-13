@@ -90,25 +90,51 @@ projects.forEach((p, i) => {
 });
 
 function typeTitle(node, title) {
-   
+
+function typeTitle(node, title) {
+  const typed = node.querySelector('.typed-title');
+  const heading = node.querySelector('.project-title');
+  const chars = Array.from(title);
+
+  typed.textContent = '';
+
+  if (reducedMotion.matches) {
+    typed.textContent = title;
+    heading.classList.remove('typing');
+    return;
+  }
+
+  heading.classList.add('typing');
+
+  chars.forEach((char, i) => {
+    later(node, () => {
+      typed.textContent += char;
+    }, 100 + i * 45);
+  });
+
+  later(node, () => {
+    heading.classList.remove('typing');
+  }, 180 + chars.length * 45);
+}
+
+
+// Separate function for deleting the title
 function eraseTitle(node) {
   const typed = node.querySelector('.typed-title');
   const heading = node.querySelector('.project-title');
   const chars = Array.from(typed.textContent);
 
-  // Instant deletion for reduced-motion preferences.
   if (reducedMotion.matches) {
     typed.textContent = '';
     heading.classList.remove('typing');
     return 0;
   }
 
-  const deleteSpeed = 35; // Milliseconds per letter
+  const deleteSpeed = 35;
   const duration = chars.length * deleteSpeed;
 
   heading.classList.add('typing');
 
-  // Delete characters one at a time, from right to left.
   chars.forEach((char, i) => {
     later(node, () => {
       typed.textContent = chars
@@ -123,23 +149,6 @@ function eraseTitle(node) {
 
   return duration;
 }
-
-  const typed = node.querySelector('.typed-title');
-  const heading = node.querySelector('.project-title');
-  const chars = Array.from(title);
-  typed.textContent = '';
-  if (reducedMotion.matches) {
-    typed.textContent = title;
-    heading.classList.remove('typing');
-    return;
-  }
-  heading.classList.add('typing');
-  chars.forEach((char, i) => {
-    later(node, () => { typed.textContent += char; }, 100 + i * 45);
-  });
-  later(node, () => heading.classList.remove('typing'), 180 + chars.length * 45);
-}
-
 function toggle(index) {
   const node = document.querySelector(`#project-${index}`);
   const panel = node.querySelector('.project-reveal');
