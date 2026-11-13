@@ -8,7 +8,7 @@
   --type-body:15px;
   --type-large:30px;
   --expand-ms:1800ms;
-  --mask-ms:450ms;
+  --mask-ms:1000ms;
 }
 * {box-sizing:border-box}
 html,body {margin:0;width:100%;height:100%;overflow:hidden}
