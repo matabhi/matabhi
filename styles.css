@@ -119,3 +119,73 @@
     transition: none;
   }
 }
+
+/* ========================================
+   V4 — TIMELINE SPACING & ANIMATION
+   ======================================== */
+
+/* 01. Move timeline toward the top */
+.timeline {
+  padding-top: clamp(32px, 6vh, 75px);
+}
+
+/* Align introduction toward the top */
+.opening {
+  width: clamp(320px, 37vw, 620px);
+  padding-right: clamp(20px, 3vw, 48px);
+  justify-content: flex-start;
+}
+
+/* 02. Bring project columns closer together */
+.projects {
+  gap: clamp(16px, 2.5vw, 36px);
+}
+
+/* 03. Slow down the expansion substantially */
+.project {
+  transition: width 2200ms
+    cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* 04. Align every project to the top */
+.project-summary {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Keep expanded and collapsed content aligned */
+.project.open .project-summary {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Align ending with the other content */
+.ending {
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+  .timeline {
+    padding-top: 36px;
+  }
+
+  .opening {
+    width: 80vw;
+    padding-right: 10vw;
+  }
+
+  .projects {
+    gap: 18px;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .project {
+    transition: none;
+  }
+}
