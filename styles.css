@@ -195,7 +195,7 @@
    ======================================== */
 
 :root {
-  --reveal-time: 600ms;
+  --reveal-time: 2000ms;
   --expand-time: 2200ms;
 }
 
