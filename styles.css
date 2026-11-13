@@ -195,8 +195,8 @@
    ======================================== */
 
 :root {
-  --reveal-time: 2000ms;
-  --expand-time: 2200ms;
+  --reveal-time: 2400ms;
+  --expand-time: 2400ms;
 }
 
 /* Keep horizontal position stable */
