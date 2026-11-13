@@ -78,8 +78,8 @@ function hidePreview(){preview.classList.remove('visible')}
 // Adjust these to change the scrolling feel.
 const SCROLL_SETTINGS = {
   sensitivity: 1.08,  // Distance per wheel movement
-  spring: 0.012,      // Lower = heavier/slower response
-  damping: 0.79       // Higher = more glide
+  spring: 0.005,      // Lower = heavier/slower response
+  damping: 0.86       // Higher = more glide
 };
 
 let targetX = viewport.scrollLeft;
