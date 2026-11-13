@@ -143,7 +143,7 @@
 
 /* 03. Slow down the expansion substantially */
 .project {
-  transition: width 2200ms
+  transition: width 8000ms
     cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
