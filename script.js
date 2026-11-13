@@ -58,9 +58,7 @@ function toggle(i){hidePreview();const next=openId===i?-1:i;openId=next;
     const detail=node.querySelector('.project-detail');detail.inert=!expanded;
     if(expanded)detail.scrollTop=0;
   });
-  // Ensure the selected project is visible, but never auto-scroll the detail vertically.
-  if(next>=0){const node=document.querySelector(`#project-${next}`);const x=node.offsetLeft-viewport.offsetLeft-30;
-    viewport.scrollTo({left:Math.max(0,x),behavior:reducedMotion.matches?'instant':'smooth'});}
+
 }
 function showPreview(e,src){previewImage.src=src;positionPreview(e);preview.classList.add('visible')}
 function positionPreview(e){const w=preview.offsetWidth||260,h=preview.offsetHeight||180;
@@ -277,4 +275,22 @@ projectsEl.addEventListener('click', (event) => {
   if (opened) {
     opened.scrollTop = 0;
   }
+});
+
+/* ========================================
+   EXPANDING PROJECT MASK
+   ======================================== */
+
+// Wrap each project's detailed content in a mask.
+// Existing buttons and event listeners are preserved.
+
+document.querySelectorAll('.project-detail').forEach(detail => {
+  const inner = document.createElement('div');
+  inner.className = 'detail-mask-inner';
+
+  while (detail.firstChild) {
+    inner.appendChild(detail.firstChild);
+  }
+
+  detail.appendChild(inner);
 });
