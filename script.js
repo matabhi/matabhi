@@ -108,7 +108,7 @@ function toggle(index) {
     void detail.offsetHeight;
     requestAnimationFrame(() => node.classList.add('revealed'));
     // Overlap the reveal and widening so there is no awkward dead time.
-    later(node, () => node.classList.add('open'), reducedMotion.matches ? 0 : 160);
+    later(node, () => node.classList.add('open'), maskTime);
   } else {
     // Shrink the image and reflow text before retracting the mask upward.
     node.classList.remove('open');
