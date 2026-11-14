@@ -7,7 +7,7 @@
   --footer-h:61px;
   --type-body:15px;
   --type-large:30px;
-  --mask-ms:700ms;
+  --mask-ms:1000ms;
   --expand-ms:2200ms;
   /* The shared inset controls header text and lower captions. */
   --project-inset:min(29%, 215px);
@@ -40,7 +40,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 .intro-index {margin-bottom:28px}
 .opening p {font-size:var(--type-large);line-height:1.16;letter-spacing:-.055em;margin:0}
 .intro-directions {margin-top:35px;color:var(--soft)}
-.projects {height:100%;display:flex;align-items:stretch;gap:clamp(16px,2.5vw,36px)}
+.projects {height:100%;display:flex;align-items:stretch;gap:clamp(8px,2.5vw,36px)}
 .project {
   width:clamp(100px,20vw,240px);height:100%;min-height:0;
   flex:none;display:flex;flex-direction:column;
