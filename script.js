@@ -227,11 +227,21 @@ viewport.addEventListener('wheel', event => {
   event.preventDefault();
   hidePreview();
   if (column) {
-    stopMomentum();
-    const scroller = column.querySelector('.project-scroll');
-    if (scroller) scroller.scrollTop += delta;
-    return;
+  const scroller = column.querySelector('.project-scroll');
+
+  if (scroller) {
+    const maxY = scroller.scrollHeight - scroller.clientHeight;
+
+    const atBottom = delta > 0 && scroller.scrollTop >= maxY - 2;
+    const atTop = delta < 0 && scroller.scrollTop <= 2;
+
+    if (!atBottom && !atTop) {
+      stopMomentum();
+      scroller.scrollTop += delta;
+      return;
+    }
   }
+}
   if (reducedMotion.matches) {
     stopMomentum();
     viewport.scrollLeft = clamp(viewport.scrollLeft + delta, 0, maxScroll());
