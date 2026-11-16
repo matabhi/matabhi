@@ -107,20 +107,14 @@ const projects = [
         ]
       },
       {
-        "layout": "single",
-        "half": false,
+        "layout": "row",
+        "gap": true,
         "images": [
           {
             "src": "assets/projects/01/4-jpg.webp",
             "width": 706,
             "height": 1081
-          }
-        ]
-      },
-      {
-        "layout": "single",
-        "half": false,
-        "images": [
+          },
           {
             "src": "assets/projects/01/5-jpg.webp",
             "width": 706,
@@ -908,11 +902,11 @@ function renderGallery(project) {
     const totalRatio = group.images.reduce((sum, image) => sum + image.width / image.height, 0);
     const figures = group.images.map(image => {
       const index = imageIndex++;
-      const width = group.layout === 'row' ? ` style="width:${100 * (image.width / image.height) / totalRatio}%"` : '';
+      const width = group.layout === 'row' ? ` style="width:calc(${100 * (image.width / image.height) / totalRatio}% - ${group.gap ? 24 * (image.width / image.height) / totalRatio : 0}px)"` : '';
       return `<figure class="${index === 0 ? 'project-lead' : ''}"${width}><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${index + 1}"></figure>`;
     }).join('');
     const credits = groupIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ''}<p class="detail-note">${project.description}</p>` : '';
-    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}${group.half ? ' gallery-half' : ''}">${figures}</div>${credits}`;
+    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}${group.half ? ' gallery-half' : ''}${group.gap ? ' gallery-gap' : ''}">${figures}</div>${credits}`;
   }).join('');
 }
 
