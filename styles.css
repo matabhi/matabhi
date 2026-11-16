@@ -233,3 +233,5 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 #project-7 {margin-right:clamp(80px,10vw,160px)}
 
 .project.is-active .excerpt {cursor:pointer}
+
+.gallery-small-right {width:40%;margin-left:auto}

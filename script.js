@@ -123,20 +123,14 @@ const projects = [
         ]
       },
       {
-        "layout": "single",
-        "half": false,
+        "layout": "row",
+        "gap": true,
         "images": [
           {
             "src": "assets/projects/01/6-jpg.webp",
             "width": 1260,
             "height": 908
-          }
-        ]
-      },
-      {
-        "layout": "single",
-        "half": false,
-        "images": [
+          },
           {
             "src": "assets/projects/01/7-jpg.webp",
             "width": 1260,
@@ -259,7 +253,8 @@ const projects = [
             "width": 709,
             "height": 945
           }
-        ]
+        ],
+        "smallRight": true
       },
       {
         "layout": "single",
@@ -906,7 +901,7 @@ function renderGallery(project) {
       return `<figure class="${index === 0 ? 'project-lead' : ''}"${width}><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${index + 1}"></figure>`;
     }).join('');
     const credits = groupIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ''}<p class="detail-note">${project.description}</p>` : '';
-    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}${group.half ? ' gallery-half' : ''}${group.gap ? ' gallery-gap' : ''}">${figures}</div>${credits}`;
+    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}${group.half ? ' gallery-half' : ''}${group.smallRight ? ' gallery-small-right' : ''}${group.gap ? ' gallery-gap' : ''}">${figures}</div>${credits}`;
   }).join('');
 }
 
