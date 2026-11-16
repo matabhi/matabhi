@@ -71,6 +71,118 @@ const projects = [
       "assets/projects/01/8-jpg.webp",
       "assets/projects/01/9-png.webp",
       "assets/projects/01/10-jpg.webp"
+    ],
+    "gallery": [
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/1-jpg.webp",
+            "width": 2236,
+            "height": 1340
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/2-jpg.webp",
+            "width": 2347,
+            "height": 1958
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": true,
+        "images": [
+          {
+            "src": "assets/projects/01/3-jpg.webp",
+            "width": 653,
+            "height": 1958
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/4-jpg.webp",
+            "width": 706,
+            "height": 1081
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/5-jpg.webp",
+            "width": 706,
+            "height": 1081
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/6-jpg.webp",
+            "width": 1260,
+            "height": 908
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/7-jpg.webp",
+            "width": 1260,
+            "height": 908
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/8-jpg.webp",
+            "width": 1479,
+            "height": 783
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/9-png.webp",
+            "width": 2400,
+            "height": 163
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "half": false,
+        "images": [
+          {
+            "src": "assets/projects/01/10-jpg.webp",
+            "width": 2400,
+            "height": 861
+          }
+        ]
+      }
     ]
   },
   {
@@ -799,7 +911,7 @@ function renderGallery(project) {
       return `<figure class="${index === 0 ? 'project-lead' : ''}"${width}><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${index + 1}"></figure>`;
     }).join('');
     const credits = groupIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ''}<p class="detail-note">${project.description}</p>` : '';
-    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}">${figures}</div>${credits}`;
+    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}${group.half ? ' gallery-half' : ''}">${figures}</div>${credits}`;
   }).join('');
 }
 

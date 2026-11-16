@@ -211,3 +211,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 .gallery-stack {display:flex;flex-direction:column;gap:0}
 
 .gallery-inset {width:calc(100% - var(--project-inset));margin-left:var(--project-inset)}
+
+.gallery-half {width:50%}
+.about {padding:0;background:transparent;box-shadow:none;width:max-content;max-width:94vw}
+.portfolio-link {background:var(--paper)}
