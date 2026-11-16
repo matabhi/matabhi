@@ -1134,6 +1134,7 @@ function animate(now) {
   // Don't read rounded scrollLeft back into the physics calculation.
   virtualX = clamp(virtualX + velocity * dt, 0, maxX);
   viewport.scrollLeft = virtualX;
+  normalizeCarousel();
 
   if (Math.abs(targetX - virtualX) < 0.45 && Math.abs(velocity) < 0.13) {
     virtualX = targetX;
@@ -1145,20 +1146,41 @@ function animate(now) {
   raf = requestAnimationFrame(animate);
 }
 
+// Recycle the same interactive columns outside the visible area.
+// Adjust scroll and momentum together so the movement on screen is continuous.
+const carousel = document.querySelector('#projects');
+const introduction = document.querySelector('.opening');
+carousel.prepend(introduction);
+let recycling = false;
+function normalizeCarousel() {
+  if (recycling) return;
+  recycling = true;
+  try {
+    const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+    const left = viewport.getBoundingClientRect().left;
+    for (let count = 0; count < carousel.children.length; count++) {
+      const first = carousel.firstElementChild;
+      const last = carousel.lastElementChild;
+      let shift = 0;
+      if (first.getBoundingClientRect().right < left - 100) {
+        shift = -(first.getBoundingClientRect().width + gap);
+        carousel.append(first);
+      } else if (first.getBoundingClientRect().left > left - 100) {
+        shift = last.getBoundingClientRect().width + gap;
+        carousel.prepend(last);
+      } else break;
+      viewport.scrollLeft += shift;
+      virtualX += shift;
+      targetX += shift;
+      if (drag) drag.initial += shift;
+    }
+  } finally { recycling = false; }
+}
+
 function scrollHorizontally(delta) {
   const maxX = maxScroll();
   if (!maxX || !delta) return;
   const current = viewport.scrollLeft;
-  // Reach an endpoint first; the next outward scroll starts another lap.
-  if ((delta > 0 && current >= maxX - 1) ||
-      (delta < 0 && current <= 1)) {
-    stopMomentum();
-    viewport.scrollLeft = delta > 0 ? 0 : maxX;
-    virtualX = viewport.scrollLeft;
-    targetX = virtualX;
-    updateProgress();
-    return;
-  }
   if (reducedMotion.matches) {
     stopMomentum();
     viewport.scrollLeft = clamp(current + delta, 0, maxX);
@@ -1226,16 +1248,26 @@ viewport.addEventListener('keydown', event => {
   }
 });
 function updateProgress() {
-  const pct = maxScroll() ? Math.round(viewport.scrollLeft / maxScroll() * 100) : 100;
+  const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+  const length = [...carousel.children].reduce((sum, node) => sum + node.getBoundingClientRect().width + gap, 0);
+  const inset = parseFloat(getComputedStyle(document.querySelector('#timeline')).paddingLeft) || 0;
+  const position = inset - introduction.getBoundingClientRect().left + viewport.getBoundingClientRect().left;
+  const phase = Math.abs(position) < 1 ? 0 : ((position % length) + length) % length;
+  const pct = Math.round(phase / length * 100);
   meter.style.width = `${pct}%`;
   percent.textContent = `${String(pct).padStart(2, '0')}%`;
 }
-viewport.addEventListener('scroll', updateProgress, {passive: true});
+viewport.addEventListener('scroll', () => { normalizeCarousel(); updateProgress(); }, {passive: true});
 window.addEventListener('resize', updateProgress);
 updateProgress();
 document.querySelector('#reset').addEventListener('click', () => {
   stopMomentum();
-  viewport.scrollTo({left: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+  carousel.append(introduction);
+  projects.forEach((_, index) => carousel.append(document.querySelector('#project-' + index)));
+  viewport.scrollLeft = 0;
+  virtualX = targetX = 0;
+  normalizeCarousel();
+  updateProgress();
 });
 const about = document.querySelector('#about');
 const aboutBtn = document.querySelector('#aboutBtn');
@@ -1254,3 +1286,7 @@ document.addEventListener('click', event => {
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') setAbout(false);
 });
+
+normalizeCarousel();
+stopMomentum();
+updateProgress();
