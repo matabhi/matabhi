@@ -1161,6 +1161,7 @@ function normalizeCarousel() {
     for (let count = 0; count < carousel.children.length; count++) {
       const first = carousel.firstElementChild;
       const last = carousel.lastElementChild;
+      const scrollBeforeMove = viewport.scrollLeft;
       let shift = 0;
       if (first.getBoundingClientRect().right < left - 100) {
         shift = -(first.getBoundingClientRect().width + (parseFloat(getComputedStyle(first).marginRight) || 0) + gap);
@@ -1169,7 +1170,7 @@ function normalizeCarousel() {
         shift = last.getBoundingClientRect().width + (parseFloat(getComputedStyle(last).marginRight) || 0) + gap;
         carousel.prepend(last);
       } else break;
-      viewport.scrollLeft += shift;
+      viewport.scrollLeft = scrollBeforeMove + shift;
       virtualX += shift;
       targetX += shift;
       if (drag) drag.initial += shift;
