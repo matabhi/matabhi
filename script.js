@@ -1163,7 +1163,7 @@ function normalizeCarousel() {
       const last = carousel.lastElementChild;
       const scrollBeforeMove = viewport.scrollLeft;
       let shift = 0;
-      if (first.getBoundingClientRect().right < left - 100) {
+      if (first.getBoundingClientRect().right + (parseFloat(getComputedStyle(first).marginRight) || 0) < left - 100) {
         shift = -(first.getBoundingClientRect().width + (parseFloat(getComputedStyle(first).marginRight) || 0) + gap);
         carousel.append(first);
       } else if (first.getBoundingClientRect().left > left - 100) {
