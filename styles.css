@@ -199,3 +199,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   .project,.project-copy,.project-reveal {transition:none!important}
   .project-title.typing::after {display:none}
 }
+
+.portfolio-link {display:inline-block;padding:12px 16px;border:1px solid var(--ink);color:var(--ink);font:inherit;text-decoration:none}
+.portfolio-link:hover {background:var(--ink);color:var(--paper)}
+.portfolio-link:focus-visible {outline:2px solid var(--red);outline-offset:4px}
