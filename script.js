@@ -92,39 +92,9 @@ const projects = [
         "height": 945
       },
       {
-        "src": "assets/projects/02/13-png.webp",
-        "width": 522,
-        "height": 445
-      },
-      {
-        "src": "assets/projects/02/14-png.webp",
-        "width": 521,
-        "height": 446
-      },
-      {
-        "src": "assets/projects/02/15-png.webp",
-        "width": 521,
-        "height": 446
-      },
-      {
-        "src": "assets/projects/02/16-png.webp",
-        "width": 521,
-        "height": 450
-      },
-      {
         "src": "assets/projects/02/17-png.webp",
         "width": 1049,
         "height": 1199
-      },
-      {
-        "src": "assets/projects/02/18-png.webp",
-        "width": 416,
-        "height": 400
-      },
-      {
-        "src": "assets/projects/02/19-png.webp",
-        "width": 513,
-        "height": 327
       },
       {
         "src": "assets/projects/02/20-jpg.webp",
@@ -147,11 +117,6 @@ const projects = [
         "height": 816
       },
       {
-        "src": "assets/projects/02/24-png.webp",
-        "width": 484,
-        "height": 21
-      },
-      {
         "src": "assets/projects/02/25-jpg.webp",
         "width": 914,
         "height": 1714
@@ -165,18 +130,11 @@ const projects = [
     "frames": [
       "assets/projects/02/11-jpg.webp",
       "assets/projects/02/12-png.webp",
-      "assets/projects/02/13-png.webp",
-      "assets/projects/02/14-png.webp",
-      "assets/projects/02/15-png.webp",
-      "assets/projects/02/16-png.webp",
       "assets/projects/02/17-png.webp",
-      "assets/projects/02/18-png.webp",
-      "assets/projects/02/19-png.webp",
       "assets/projects/02/20-jpg.webp",
       "assets/projects/02/21-png.webp",
       "assets/projects/02/22-jpg.webp",
       "assets/projects/02/23-jpg.webp",
-      "assets/projects/02/24-png.webp",
       "assets/projects/02/25-jpg.webp",
       "assets/projects/02/26-jpg.webp"
     ]
@@ -245,6 +203,78 @@ const projects = [
       "assets/projects/03/33-jpg.webp",
       "assets/projects/03/34-jpg.webp",
       "assets/projects/03/35-jpg.webp"
+    ],
+    "gallery": [
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/03/27-jpg.webp",
+            "width": 2236,
+            "height": 1341
+          }
+        ]
+      },
+      {
+        "layout": "stack",
+        "images": [
+          {
+            "src": "assets/projects/03/28-png.webp",
+            "width": 1411,
+            "height": 239
+          },
+          {
+            "src": "assets/projects/03/29-png.webp",
+            "width": 1417,
+            "height": 619
+          },
+          {
+            "src": "assets/projects/03/30-png.webp",
+            "width": 1413,
+            "height": 313
+          },
+          {
+            "src": "assets/projects/03/31-png.webp",
+            "width": 1286,
+            "height": 627
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/03/32-jpg.webp",
+            "width": 1479,
+            "height": 801
+          }
+        ]
+      },
+      {
+        "layout": "row",
+        "images": [
+          {
+            "src": "assets/projects/03/33-jpg.webp",
+            "width": 1532,
+            "height": 1434
+          },
+          {
+            "src": "assets/projects/03/34-jpg.webp",
+            "width": 1578,
+            "height": 1434
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/03/35-jpg.webp",
+            "width": 738,
+            "height": 477
+          }
+        ]
+      }
     ]
   },
   {
@@ -261,6 +291,16 @@ const projects = [
         "height": 1341
       },
       {
+        "src": "assets/projects/04/40-jpg.webp",
+        "width": 560,
+        "height": 746
+      },
+      {
+        "src": "assets/projects/04/41-jpg.webp",
+        "width": 709,
+        "height": 615
+      },
+      {
         "src": "assets/projects/04/37-jpg.webp",
         "width": 717,
         "height": 1095
@@ -274,25 +314,72 @@ const projects = [
         "src": "assets/projects/04/39-jpg.webp",
         "width": 1479,
         "height": 1095
-      },
-      {
-        "src": "assets/projects/04/40-jpg.webp",
-        "width": 560,
-        "height": 746
-      },
-      {
-        "src": "assets/projects/04/41-jpg.webp",
-        "width": 709,
-        "height": 615
       }
     ],
     "frames": [
       "assets/projects/04/36-jpg.webp",
+      "assets/projects/04/40-jpg.webp",
+      "assets/projects/04/41-jpg.webp",
       "assets/projects/04/37-jpg.webp",
       "assets/projects/04/38-jpg.webp",
-      "assets/projects/04/39-jpg.webp",
-      "assets/projects/04/40-jpg.webp",
-      "assets/projects/04/41-jpg.webp"
+      "assets/projects/04/39-jpg.webp"
+    ],
+    "gallery": [
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/04/36-jpg.webp",
+            "width": 2236,
+            "height": 1341
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/04/40-jpg.webp",
+            "width": 560,
+            "height": 746
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/04/41-jpg.webp",
+            "width": 709,
+            "height": 615
+          }
+        ]
+      },
+      {
+        "layout": "row",
+        "images": [
+          {
+            "src": "assets/projects/04/37-jpg.webp",
+            "width": 717,
+            "height": 1095
+          },
+          {
+            "src": "assets/projects/04/38-jpg.webp",
+            "width": 719,
+            "height": 1095
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/04/39-jpg.webp",
+            "width": 1479,
+            "height": 1095
+          }
+        ]
+      }
     ]
   },
   {
@@ -309,7 +396,27 @@ const projects = [
         "height": 1341
       },
       {
-        "src": "assets/projects/05/43-png.webp",
+        "src": "assets/projects/05/49-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/47-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/46-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/48-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/50-png.webp",
         "width": 765,
         "height": 574
       },
@@ -324,41 +431,83 @@ const projects = [
         "height": 574
       },
       {
-        "src": "assets/projects/05/46-png.webp",
-        "width": 765,
-        "height": 571
-      },
-      {
-        "src": "assets/projects/05/47-png.webp",
-        "width": 765,
-        "height": 571
-      },
-      {
-        "src": "assets/projects/05/48-png.webp",
-        "width": 765,
-        "height": 571
-      },
-      {
-        "src": "assets/projects/05/49-png.webp",
-        "width": 765,
-        "height": 571
-      },
-      {
-        "src": "assets/projects/05/50-png.webp",
+        "src": "assets/projects/05/43-png.webp",
         "width": 765,
         "height": 574
       }
     ],
     "frames": [
       "assets/projects/05/42-png.webp",
-      "assets/projects/05/43-png.webp",
+      "assets/projects/05/49-png.webp",
+      "assets/projects/05/47-png.webp",
+      "assets/projects/05/46-png.webp",
+      "assets/projects/05/48-png.webp",
+      "assets/projects/05/50-png.webp",
       "assets/projects/05/44-png.webp",
       "assets/projects/05/45-png.webp",
-      "assets/projects/05/46-png.webp",
-      "assets/projects/05/47-png.webp",
-      "assets/projects/05/48-png.webp",
-      "assets/projects/05/49-png.webp",
-      "assets/projects/05/50-png.webp"
+      "assets/projects/05/43-png.webp"
+    ],
+    "gallery": [
+      {
+        "layout": "single",
+        "images": [
+          {
+            "src": "assets/projects/05/42-png.webp",
+            "width": 2237,
+            "height": 1341
+          }
+        ]
+      },
+      {
+        "layout": "row",
+        "images": [
+          {
+            "src": "assets/projects/05/49-png.webp",
+            "width": 765,
+            "height": 571
+          },
+          {
+            "src": "assets/projects/05/47-png.webp",
+            "width": 765,
+            "height": 571
+          },
+          {
+            "src": "assets/projects/05/46-png.webp",
+            "width": 765,
+            "height": 571
+          },
+          {
+            "src": "assets/projects/05/48-png.webp",
+            "width": 765,
+            "height": 571
+          }
+        ]
+      },
+      {
+        "layout": "row",
+        "images": [
+          {
+            "src": "assets/projects/05/50-png.webp",
+            "width": 765,
+            "height": 574
+          },
+          {
+            "src": "assets/projects/05/44-png.webp",
+            "width": 765,
+            "height": 574
+          },
+          {
+            "src": "assets/projects/05/45-png.webp",
+            "width": 765,
+            "height": 574
+          },
+          {
+            "src": "assets/projects/05/43-png.webp",
+            "width": 765,
+            "height": 574
+          }
+        ]
+      }
     ]
   },
   {
@@ -485,11 +634,6 @@ const projects = [
         "height": 1350
       },
       {
-        "src": "assets/projects/07/51-png.webp",
-        "width": 1033,
-        "height": 1738
-      },
-      {
         "src": "assets/projects/07/52-jpg.webp",
         "width": 2400,
         "height": 1529
@@ -523,7 +667,6 @@ const projects = [
       "assets/projects/07/49-jpg.webp",
       "assets/projects/07/50-png.webp",
       "assets/projects/07/51-jpg.webp",
-      "assets/projects/07/51-png.webp",
       "assets/projects/07/52-jpg.webp",
       "assets/projects/07/53-jpg.webp",
       "assets/projects/07/54-jpg.webp",
@@ -563,6 +706,21 @@ const projects = [
     ]
   }
 ];
+
+function renderGallery(project) {
+  const groups = project.gallery || project.images.map(image => ({layout: 'single', images: [image]}));
+  let imageIndex = 0;
+  return groups.map((group, groupIndex) => {
+    const totalRatio = group.images.reduce((sum, image) => sum + image.width / image.height, 0);
+    const figures = group.images.map(image => {
+      const index = imageIndex++;
+      const width = group.layout === 'row' ? ` style="width:${100 * (image.width / image.height) / totalRatio}%"` : '';
+      return `<figure class="${index === 0 ? 'project-lead' : ''}"${width}><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${index + 1}"></figure>`;
+    }).join('');
+    const credits = groupIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ''}<p class="detail-note">${project.description}</p>` : '';
+    return `<div class="gallery-group gallery-${group.layout}">${figures}</div>${credits}`;
+  }).join('');
+}
 
 const viewport = document.querySelector('#viewport');
 const projectsEl = document.querySelector('#projects');
@@ -610,7 +768,7 @@ projects.forEach((project, index) => {
     </div>
     <section id="detail-${index}" class="project-reveal" hidden inert aria-label="Project images and notes: ${project.title}">
       <div class="project-scroll" tabindex="0" aria-label="Scroll vertically through ${project.title}">
-        ${project.images.map((image, imageIndex) => `<figure class="${imageIndex === 0 ? "project-lead" : ""}"><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${imageIndex + 1}"></figure>${imageIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ""}<p class="detail-note">${project.description}</p>` : ""}`).join("")}
+        ${renderGallery(project)}
         <p class="detail-note">END OF PROJECT / ${number}</p>
       </div>
     </section>`;
