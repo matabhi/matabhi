@@ -1145,6 +1145,31 @@ function animate(now) {
   raf = requestAnimationFrame(animate);
 }
 
+function scrollHorizontally(delta) {
+  const maxX = maxScroll();
+  if (!maxX || !delta) return;
+  const current = viewport.scrollLeft;
+  // Reach an endpoint first; the next outward scroll starts another lap.
+  if ((delta > 0 && current >= maxX - 1) ||
+      (delta < 0 && current <= 1)) {
+    stopMomentum();
+    viewport.scrollLeft = delta > 0 ? 0 : maxX;
+    virtualX = viewport.scrollLeft;
+    targetX = virtualX;
+    updateProgress();
+    return;
+  }
+  if (reducedMotion.matches) {
+    stopMomentum();
+    viewport.scrollLeft = clamp(current + delta, 0, maxX);
+    return;
+  }
+  if (!raf) { virtualX = current; targetX = current; lastFrame = 0; }
+  targetX = clamp(targetX + delta, 0, maxX);
+  if (!raf && Math.abs(targetX - virtualX) > 0.1)
+    raf = requestAnimationFrame(animate);
+}
+
 // Wheel over an open project scrolls lower media vertically, even over fixed header.
 viewport.addEventListener('wheel', event => {
   const column = event.target.closest('.project.is-active');
@@ -1163,15 +1188,7 @@ viewport.addEventListener('wheel', event => {
     if (scroller) scroller.scrollTop += delta;
     return;
   }
-  if (reducedMotion.matches) {
-    stopMomentum();
-    viewport.scrollLeft = clamp(viewport.scrollLeft + delta, 0, maxScroll());
-    return;
-  }
-  if (!raf) { virtualX = viewport.scrollLeft; targetX = virtualX; lastFrame = 0; }
-  targetX = clamp(targetX + delta * SCROLL_SETTINGS.sensitivity, 0, maxScroll());
-  if (!raf && Math.abs(targetX - virtualX) > 0.1)
-    raf = requestAnimationFrame(animate);
+  scrollHorizontally(delta * SCROLL_SETTINGS.sensitivity);
 }, {passive: false});
 
 // Drag background horizontally. Open project content retains its own scrolling.
@@ -1205,9 +1222,7 @@ viewport.addEventListener('keydown', event => {
   if (event.target.closest('.project.is-active')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
     event.preventDefault();
-    stopMomentum();
-    viewport.scrollBy({left: event.key === 'ArrowRight' ? 260 : -260,
-      behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    scrollHorizontally(event.key === 'ArrowRight' ? 260 : -260);
   }
 });
 function updateProgress() {
