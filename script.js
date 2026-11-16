@@ -1163,10 +1163,10 @@ function normalizeCarousel() {
       const last = carousel.lastElementChild;
       let shift = 0;
       if (first.getBoundingClientRect().right < left - 100) {
-        shift = -(first.getBoundingClientRect().width + gap);
+        shift = -(first.getBoundingClientRect().width + (parseFloat(getComputedStyle(first).marginRight) || 0) + gap);
         carousel.append(first);
       } else if (first.getBoundingClientRect().left > left - 100) {
-        shift = last.getBoundingClientRect().width + gap;
+        shift = last.getBoundingClientRect().width + (parseFloat(getComputedStyle(last).marginRight) || 0) + gap;
         carousel.prepend(last);
       } else break;
       viewport.scrollLeft += shift;
@@ -1249,7 +1249,7 @@ viewport.addEventListener('keydown', event => {
 });
 function updateProgress() {
   const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
-  const length = [...carousel.children].reduce((sum, node) => sum + node.getBoundingClientRect().width + gap, 0);
+  const length = [...carousel.children].reduce((sum, node) => sum + node.getBoundingClientRect().width + (parseFloat(getComputedStyle(node).marginRight) || 0) + gap, 0);
   const inset = parseFloat(getComputedStyle(document.querySelector('#timeline')).paddingLeft) || 0;
   const position = inset - introduction.getBoundingClientRect().left + viewport.getBoundingClientRect().left;
   const phase = Math.abs(position) < 1 ? 0 : ((position % length) + length) % length;

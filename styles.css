@@ -228,3 +228,6 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 @keyframes ellipsis-second {0% {opacity:0} 25% {opacity:1} 75%,100% {opacity:0}}
 @keyframes ellipsis-third {0% {opacity:0} 50% {opacity:1} 75%,100% {opacity:0}}
 @media(prefers-reduced-motion:reduce) {.animated-ellipsis span {animation:none!important}}
+
+/* Extra breathing room at the seam between the final project and introduction. */
+#project-7 {margin-right:clamp(80px,10vw,160px)}
