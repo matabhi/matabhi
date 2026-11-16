@@ -1031,7 +1031,11 @@ function setAbout(open) {
   hidePreview();
 }
 aboutBtn.addEventListener('click', () => setAbout(about.hidden));
-document.querySelector('#aboutClose').addEventListener('click', () => setAbout(false));
+document.addEventListener('click', event => {
+  if (!about.hidden && !about.contains(event.target) && !aboutBtn.contains(event.target)) {
+    setAbout(false);
+  }
+});
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') setAbout(false);
 });
