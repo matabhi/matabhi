@@ -102,11 +102,6 @@ const projects = [
         "height": 2112
       },
       {
-        "src": "assets/projects/02/21-png.webp",
-        "width": 1419,
-        "height": 1056
-      },
-      {
         "src": "assets/projects/02/22-jpg.webp",
         "width": 694,
         "height": 694
@@ -132,11 +127,100 @@ const projects = [
       "assets/projects/02/12-png.webp",
       "assets/projects/02/17-png.webp",
       "assets/projects/02/20-jpg.webp",
-      "assets/projects/02/21-png.webp",
       "assets/projects/02/22-jpg.webp",
       "assets/projects/02/23-jpg.webp",
       "assets/projects/02/25-jpg.webp",
       "assets/projects/02/26-jpg.webp"
+    ],
+    "gallery": [
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/11-jpg.webp",
+            "width": 2308,
+            "height": 1298
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/12-png.webp",
+            "width": 709,
+            "height": 945
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/17-png.webp",
+            "width": 1049,
+            "height": 1199
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": true,
+        "images": [
+          {
+            "src": "assets/projects/02/20-jpg.webp",
+            "width": 2112,
+            "height": 2112
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": true,
+        "images": [
+          {
+            "src": "assets/projects/02/22-jpg.webp",
+            "width": 694,
+            "height": 694
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/23-jpg.webp",
+            "width": 2101,
+            "height": 816
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/25-jpg.webp",
+            "width": 914,
+            "height": 1714
+          }
+        ]
+      },
+      {
+        "layout": "single",
+        "inset": false,
+        "images": [
+          {
+            "src": "assets/projects/02/26-jpg.webp",
+            "width": 2095,
+            "height": 884
+          }
+        ]
+      }
     ]
   },
   {
@@ -238,7 +322,8 @@ const projects = [
             "width": 1286,
             "height": 627
           }
-        ]
+        ],
+        "inset": true
       },
       {
         "layout": "single",
@@ -336,18 +421,14 @@ const projects = [
         ]
       },
       {
-        "layout": "single",
+        "layout": "row",
+        "inset": true,
         "images": [
           {
             "src": "assets/projects/04/40-jpg.webp",
             "width": 560,
             "height": 746
-          }
-        ]
-      },
-      {
-        "layout": "single",
-        "images": [
+          },
           {
             "src": "assets/projects/04/41-jpg.webp",
             "width": 709,
@@ -718,7 +799,7 @@ function renderGallery(project) {
       return `<figure class="${index === 0 ? 'project-lead' : ''}"${width}><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${index + 1}"></figure>`;
     }).join('');
     const credits = groupIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ''}<p class="detail-note">${project.description}</p>` : '';
-    return `<div class="gallery-group gallery-${group.layout}">${figures}</div>${credits}`;
+    return `<div class="gallery-group gallery-${group.layout}${group.inset ? ' gallery-inset' : ''}">${figures}</div>${credits}`;
   }).join('');
 }
 

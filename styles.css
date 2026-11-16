@@ -209,3 +209,5 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 .gallery-row {display:flex;align-items:flex-start;gap:0}
 .gallery-row figure {flex:none;min-width:0}
 .gallery-stack {display:flex;flex-direction:column;gap:0}
+
+.gallery-inset {width:calc(100% - var(--project-inset));margin-left:var(--project-inset)}
