@@ -971,6 +971,17 @@ projects.forEach((project, index) => {
 
   const numberButton = node.querySelector('.project-number');
   const summary = node.querySelector('.project-copy');
+  const excerpt = node.querySelector('.excerpt');
+  excerpt.tabIndex = 0;
+  excerpt.setAttribute('role', 'button');
+  excerpt.setAttribute('aria-controls', 'detail-' + index);
+  excerpt.setAttribute('aria-expanded', 'false');
+  excerpt.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (node.dataset.expanded !== 'true') toggle(index);
+    }
+  });
   numberButton.addEventListener('click', () => toggle(index));
   summary.addEventListener('click', () => {
     if (node.dataset.expanded !== 'true') toggle(index);
@@ -1048,6 +1059,7 @@ function toggle(index) {
   hidePreview();
   node.dataset.expanded = String(opening);
   numberButton.setAttribute('aria-expanded', String(opening));
+  node.querySelector('.excerpt').setAttribute('aria-expanded', String(opening));
   numberButton.setAttribute('aria-label',
     `${opening ? 'Close' : 'Open'} project ${String(index + 1).padStart(2, '0')}: ${projects[index].title}`);
 
@@ -1172,7 +1184,7 @@ viewport.addEventListener('wheel', event => {
 let drag = null, blockClick = false;
 viewport.addEventListener('pointerdown', event => {
   stopMomentum();
-  if (event.pointerType !== 'mouse' || event.button !== 0 || event.target.closest('button,a,.project.is-active')) return;
+  if (event.pointerType !== 'mouse' || event.button !== 0 || event.target.closest('button,a,.project-copy,.project.is-active')) return;
   drag = {id: event.pointerId, x: event.clientX, initial: viewport.scrollLeft, moved: false};
   viewport.setPointerCapture(event.pointerId);
   viewport.classList.add('dragging');
