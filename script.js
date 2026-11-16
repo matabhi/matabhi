@@ -1,11 +1,536 @@
 /* Portfolio — repaired script (November 2026).
-   Replace project data here when ready. Compatible with the current styles.css. */
+   Project text and image galleries. Compatible with the current styles.css. */
 const projects = [
-  {year:'2024',title:'Performing Representation',short:'An ongoing investigation into architectural representation, exploring how drawings, models, photographs, and staged images can operate as more than documents of a finished building. Through a series of experiments with scale, composition, movement, and physical media, the work considers how the act of representing space can become a form of design in itself. These studies move between precise architectural conventions and more speculative visual methods, questioning where the boundary between an object and its image begins.',field:'ARCHITECTURE / RESEARCH',loop:'assets/loop-1.gif',frames:['assets/project-1.svg','assets/sketch-1.svg']},
-  {year:'2025',title:'Material Studies',short:'A collection of small-scale material experiments developed through making, testing, and revising. Each study begins with a basic operation such as folding, casting, cutting, joining, or assembling, then follows the unexpected behavior of the material rather than a predetermined form. The resulting fragments, models, and objects document both successful techniques and productive failures. Together they form an evolving archive of fabrication processes that may eventually translate into larger spatial projects.',field:'OBJECTS / FABRICATION',loop:'assets/loop-2.gif',frames:['assets/project-2.svg','assets/sketch-2.svg']},
-  {year:'2025',title:'Image Experiments',short:'These image-based experiments explore the uncertain space between architectural drawing, photographic record, and independent artwork. Using techniques such as cyanotype printing, layered exposures, scanned textures, and digital manipulation, the work tests how an image can distort, preserve, or invent a sense of place. Some pieces begin as documentation of ordinary environments, while others are assembled from fragments that have no single physical source. The series is less concerned with producing a definitive image than with examining what happens when representation becomes unstable, ambiguous, and open to interpretation.',field:'IMAGES / REPRESENTATION',loop:'assets/loop-3.gif',frames:['assets/project-3.svg','assets/sketch-3.svg']},
-  {year:'2026',title:'Independent Publications',short:'An assortment of self-initiated publications bringing together writing, photography, drawing, and graphic design. The books operate as informal archives: places to collect observations, recurring ideas, unfinished research, and visual material that might otherwise remain scattered across notebooks and folders. Layout, sequencing, paper, binding, and reproduction are treated as design decisions rather than neutral containers for content. Each publication becomes an experiment in how disparate material can acquire a new rhythm when organized on a page.',field:'PRINT / EDITORIAL',loop:'assets/loop-4.gif',frames:['assets/project-4.svg','assets/sketch-4.svg']},
-  {year:'2026',title:'Other Objects',short:'A loose collection of objects, prototypes, visual tests, and side projects that resist an easy category. Some began as quick exercises in learning a new tool; others grew out of conversations, found materials, or questions that did not fit into a conventional architectural project. The collection includes small fabricated pieces, printed matter, speculative forms, and incomplete ideas that are still being developed. Presented together, these works offer a look at the process of making without requiring every experiment to resolve into a polished or clearly defined outcome.',field:'OBJECTS / OTHER',loop:'assets/loop-5.gif',frames:['assets/project-5.svg','assets/sketch-5.svg']}
+  {
+    "title": "Dining Laboratories",
+    "year": "2024",
+    "field": "ARCHITECTURE / 5TH YEAR STUDIO",
+    "short": "Chicago’s historic boulevard system, often referred to as the Emerald Necklace, stitches together parks and neighborhoods through a continuous network of green spaces. This idea of connection extends beyond the scale of the city, offering a way to reconsider the relationship between the spaces where food is researched, experimented with, prepared, and ultimately eaten.",
+    "description": "The spaces where food is prepared, studied, and experimented with are often separated from the places where we eat it. We began by questioning that separation, imagining a building where these activities could exist alongside one another. Food became a way of bringing together people with different interests, whether they were learning to cook, developing a business, or simply sharing a meal. We explored how the progression from experimentation to preparation and dining could inform the building’s organization. These activities gather around a central dining hall, creating a shared space where the processes surrounding food become part of a larger public experience. Situated along Chicago’s boulevard system, the building offers a new place for exchange within the neighborhood.",
+    "credits": "Abhi Nursilo, Carolina Gonzales · Spring 2024 · Instructors: Iker Gil, Michel Rojkind · Humboldt Park & East Garfield Park, Chicago",
+    "images": [
+      {
+        "src": "assets/projects/01/1-jpg.webp",
+        "width": 2236,
+        "height": 1340
+      },
+      {
+        "src": "assets/projects/01/2-jpg.webp",
+        "width": 2347,
+        "height": 1958
+      },
+      {
+        "src": "assets/projects/01/3-jpg.webp",
+        "width": 653,
+        "height": 1958
+      },
+      {
+        "src": "assets/projects/01/4-jpg.webp",
+        "width": 706,
+        "height": 1081
+      },
+      {
+        "src": "assets/projects/01/5-jpg.webp",
+        "width": 706,
+        "height": 1081
+      },
+      {
+        "src": "assets/projects/01/6-jpg.webp",
+        "width": 1260,
+        "height": 908
+      },
+      {
+        "src": "assets/projects/01/7-jpg.webp",
+        "width": 1260,
+        "height": 908
+      },
+      {
+        "src": "assets/projects/01/8-jpg.webp",
+        "width": 1479,
+        "height": 783
+      },
+      {
+        "src": "assets/projects/01/9-png.webp",
+        "width": 2400,
+        "height": 163
+      },
+      {
+        "src": "assets/projects/01/10-jpg.webp",
+        "width": 2400,
+        "height": 861
+      }
+    ],
+    "frames": [
+      "assets/projects/01/1-jpg.webp",
+      "assets/projects/01/2-jpg.webp",
+      "assets/projects/01/3-jpg.webp",
+      "assets/projects/01/4-jpg.webp",
+      "assets/projects/01/5-jpg.webp",
+      "assets/projects/01/6-jpg.webp",
+      "assets/projects/01/7-jpg.webp",
+      "assets/projects/01/8-jpg.webp",
+      "assets/projects/01/9-png.webp",
+      "assets/projects/01/10-jpg.webp"
+    ]
+  },
+  {
+    "title": "South Shore Street Hall",
+    "year": "2022",
+    "field": "ARCHITECTURE / 4TH YEAR STUDIO",
+    "short": "The train line running through the site became a starting point for exploring how movement and circulation could shape the architecture. Looking at the arcade typology throughout history, circulation was considered not simply as a means of getting from one place to another, but as a space for gathering, activity, and exchange.",
+    "description": "These ideas developed into a campus organized around an interior pedestrian street, where a library, gymnasium, and makerspace form a series of interconnected public spaces. The placement of these programs creates smaller plazas and passages throughout the site, while operable facades allow activities to extend beyond the building and into the surrounding neighborhood. The resulting campus becomes an extension of the street itself, where circulation is as much a part of the program as the spaces it connects.",
+    "credits": "Abhi Nursilo and Sam Larsen · Fall/Spring 2022 · Instructor: Andy Tinucci · South Shore, Chicago",
+    "images": [
+      {
+        "src": "assets/projects/02/11-jpg.webp",
+        "width": 2308,
+        "height": 1298
+      },
+      {
+        "src": "assets/projects/02/12-png.webp",
+        "width": 709,
+        "height": 945
+      },
+      {
+        "src": "assets/projects/02/13-png.webp",
+        "width": 522,
+        "height": 445
+      },
+      {
+        "src": "assets/projects/02/14-png.webp",
+        "width": 521,
+        "height": 446
+      },
+      {
+        "src": "assets/projects/02/15-png.webp",
+        "width": 521,
+        "height": 446
+      },
+      {
+        "src": "assets/projects/02/16-png.webp",
+        "width": 521,
+        "height": 450
+      },
+      {
+        "src": "assets/projects/02/17-png.webp",
+        "width": 1049,
+        "height": 1199
+      },
+      {
+        "src": "assets/projects/02/18-png.webp",
+        "width": 416,
+        "height": 400
+      },
+      {
+        "src": "assets/projects/02/19-png.webp",
+        "width": 513,
+        "height": 327
+      },
+      {
+        "src": "assets/projects/02/20-jpg.webp",
+        "width": 2112,
+        "height": 2112
+      },
+      {
+        "src": "assets/projects/02/21-png.webp",
+        "width": 1419,
+        "height": 1056
+      },
+      {
+        "src": "assets/projects/02/22-jpg.webp",
+        "width": 694,
+        "height": 694
+      },
+      {
+        "src": "assets/projects/02/23-jpg.webp",
+        "width": 2101,
+        "height": 816
+      },
+      {
+        "src": "assets/projects/02/24-png.webp",
+        "width": 484,
+        "height": 21
+      },
+      {
+        "src": "assets/projects/02/25-jpg.webp",
+        "width": 914,
+        "height": 1714
+      },
+      {
+        "src": "assets/projects/02/26-jpg.webp",
+        "width": 2095,
+        "height": 884
+      }
+    ],
+    "frames": [
+      "assets/projects/02/11-jpg.webp",
+      "assets/projects/02/12-png.webp",
+      "assets/projects/02/13-png.webp",
+      "assets/projects/02/14-png.webp",
+      "assets/projects/02/15-png.webp",
+      "assets/projects/02/16-png.webp",
+      "assets/projects/02/17-png.webp",
+      "assets/projects/02/18-png.webp",
+      "assets/projects/02/19-png.webp",
+      "assets/projects/02/20-jpg.webp",
+      "assets/projects/02/21-png.webp",
+      "assets/projects/02/22-jpg.webp",
+      "assets/projects/02/23-jpg.webp",
+      "assets/projects/02/24-png.webp",
+      "assets/projects/02/25-jpg.webp",
+      "assets/projects/02/26-jpg.webp"
+    ]
+  },
+  {
+    "title": "35th Street Arboretum",
+    "year": "2023",
+    "field": "LANDSCAPE / 5TH YEAR STUDIO",
+    "short": "Traditionally, arboretums exist as defined landscapes, often separated from the surrounding urban environment. The 35th Street Arboretum challenges this boundary, exploring how the landscape of an arboretum could instead become part of the city itself. Extending Chicago’s lakefront ecology into the neighborhoods of Bridgeport and Bronzeville, the project explores the relationship between nature, circulation, and the existing urban fabric.",
+    "description": "A study of historical and contemporary arboretums provided an understanding of how planting strategies, pathways, and public programs have been organized over time. By layering these precedents onto the existing neighborhoods, new opportunities for pedestrian connections and ecological corridors began to emerge. The resulting network of paths, plantings, and public interventions transforms the arboretum from a singular destination into a landscape experienced through everyday life.",
+    "credits": "Abhi Nursilo, Carolina Gonzales, Samra Shahid, Galilea Ines · Fall 2023 · Instructors: Dirk Denison, Maria Villalobos, Justin Degroff · Bridgeport and Bronzeville, Chicago",
+    "images": [
+      {
+        "src": "assets/projects/03/27-jpg.webp",
+        "width": 2236,
+        "height": 1341
+      },
+      {
+        "src": "assets/projects/03/28-png.webp",
+        "width": 1411,
+        "height": 239
+      },
+      {
+        "src": "assets/projects/03/29-png.webp",
+        "width": 1417,
+        "height": 619
+      },
+      {
+        "src": "assets/projects/03/30-png.webp",
+        "width": 1413,
+        "height": 313
+      },
+      {
+        "src": "assets/projects/03/31-png.webp",
+        "width": 1286,
+        "height": 627
+      },
+      {
+        "src": "assets/projects/03/32-jpg.webp",
+        "width": 1479,
+        "height": 801
+      },
+      {
+        "src": "assets/projects/03/33-jpg.webp",
+        "width": 1532,
+        "height": 1434
+      },
+      {
+        "src": "assets/projects/03/34-jpg.webp",
+        "width": 1578,
+        "height": 1434
+      },
+      {
+        "src": "assets/projects/03/35-jpg.webp",
+        "width": 738,
+        "height": 477
+      }
+    ],
+    "frames": [
+      "assets/projects/03/27-jpg.webp",
+      "assets/projects/03/28-png.webp",
+      "assets/projects/03/29-png.webp",
+      "assets/projects/03/30-png.webp",
+      "assets/projects/03/31-png.webp",
+      "assets/projects/03/32-jpg.webp",
+      "assets/projects/03/33-jpg.webp",
+      "assets/projects/03/34-jpg.webp",
+      "assets/projects/03/35-jpg.webp"
+    ]
+  },
+  {
+    "title": "Rattan Stool",
+    "year": "2023",
+    "field": "FURNITURE / ALTERNATIVE CHAIRS",
+    "short": "Unlike rigid materials, woven rattan has the ability to bend, flex, and respond to the weight of the body. Understanding these qualities led to an investigation into how the material itself could inform the shape and function of a seat, rather than simply act as its surface.",
+    "description": "The flexibility of the weave allowed for a curved seating surface that responds to changes in posture, introducing the already well established idea of active sitting. Rather than supporting the body in a single fixed position, the stool accommodates two ways of sitting. Leaning backward allows the stool to bear the body’s weight, while leaning forward transfers some of that weight to the user’s legs. The resulting design brings together the craft of rattan weaving and an exploration of how furniture can encourage movement and interaction with the body.",
+    "credits": "4th Year Alternative Chairs · Spring 2023 · Instructor: John Kriegshauser",
+    "images": [
+      {
+        "src": "assets/projects/04/36-jpg.webp",
+        "width": 2236,
+        "height": 1341
+      },
+      {
+        "src": "assets/projects/04/37-jpg.webp",
+        "width": 717,
+        "height": 1095
+      },
+      {
+        "src": "assets/projects/04/38-jpg.webp",
+        "width": 719,
+        "height": 1095
+      },
+      {
+        "src": "assets/projects/04/39-jpg.webp",
+        "width": 1479,
+        "height": 1095
+      },
+      {
+        "src": "assets/projects/04/40-jpg.webp",
+        "width": 560,
+        "height": 746
+      },
+      {
+        "src": "assets/projects/04/41-jpg.webp",
+        "width": 709,
+        "height": 615
+      }
+    ],
+    "frames": [
+      "assets/projects/04/36-jpg.webp",
+      "assets/projects/04/37-jpg.webp",
+      "assets/projects/04/38-jpg.webp",
+      "assets/projects/04/39-jpg.webp",
+      "assets/projects/04/40-jpg.webp",
+      "assets/projects/04/41-jpg.webp"
+    ]
+  },
+  {
+    "title": "Ribbat Meat Co Company Newsletter",
+    "year": "2023–Present",
+    "field": "PRINT / EDITORIAL",
+    "short": "What began as a way for a group of friends to keep up with one another gradually developed into an ongoing collection of stories and experiences. Each month, everyone contributes an entry sharing updates on their lives, from everyday happenings and personal milestones to the occasional unexpected story.",
+    "description": "At the end of each year, these monthly updates are compiled into a printed book, bringing together twelve months of different voices and perspectives. The process of organizing these entries creates an opportunity to experiment with typography, composition, and the relationship between text and imagery. The resulting publication becomes a physical record of the year.",
+    "credits": "An Ongoing Collection · 2023–Present",
+    "images": [
+      {
+        "src": "assets/projects/05/42-png.webp",
+        "width": 2237,
+        "height": 1341
+      },
+      {
+        "src": "assets/projects/05/43-png.webp",
+        "width": 765,
+        "height": 574
+      },
+      {
+        "src": "assets/projects/05/44-png.webp",
+        "width": 765,
+        "height": 574
+      },
+      {
+        "src": "assets/projects/05/45-png.webp",
+        "width": 765,
+        "height": 574
+      },
+      {
+        "src": "assets/projects/05/46-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/47-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/48-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/49-png.webp",
+        "width": 765,
+        "height": 571
+      },
+      {
+        "src": "assets/projects/05/50-png.webp",
+        "width": 765,
+        "height": 574
+      }
+    ],
+    "frames": [
+      "assets/projects/05/42-png.webp",
+      "assets/projects/05/43-png.webp",
+      "assets/projects/05/44-png.webp",
+      "assets/projects/05/45-png.webp",
+      "assets/projects/05/46-png.webp",
+      "assets/projects/05/47-png.webp",
+      "assets/projects/05/48-png.webp",
+      "assets/projects/05/49-png.webp",
+      "assets/projects/05/50-png.webp"
+    ]
+  },
+  {
+    "title": "Intuit Art Lending Library",
+    "year": "2021",
+    "field": "ARCHITECTURE / 3RD YEAR STUDIO",
+    "short": "The Intuit Center is an existing Chicago museum focusing on Outsider art prevalent in the Midwest. This semester’s project was an adaptive reuse of the building, adding art lending and repair as additional programs. The project’s new program creates new opportunities for art education.",
+    "description": "To preserve the original facade of the building, only the first floor was changed. This was done in order to increase ease of access. The building faces two different streets, warranting access from both sides. The large glass facade facing Milwaukee Ave. invites the public into the Outsider Art Gallery. From Aberdeen St. the building opens into the art return and repair center.",
+    "credits": "3rd Year Studio · Spring 2021 · Instructors: Randall Mattheis, Mason Pritchett · River West, Chicago",
+    "subtitle": "Learning Art Through Repair",
+    "images": [
+      {
+        "src": "assets/projects/06/24-jpg.webp",
+        "width": 2400,
+        "height": 1600
+      },
+      {
+        "src": "assets/projects/06/25-jpg.webp",
+        "width": 2400,
+        "height": 1600
+      },
+      {
+        "src": "assets/projects/06/28-png.webp",
+        "width": 2400,
+        "height": 1000
+      },
+      {
+        "src": "assets/projects/06/32-jpg.webp",
+        "width": 1600,
+        "height": 2400
+      },
+      {
+        "src": "assets/projects/06/33-png.webp",
+        "width": 1602,
+        "height": 2400
+      },
+      {
+        "src": "assets/projects/06/34-png.webp",
+        "width": 1733,
+        "height": 1122
+      },
+      {
+        "src": "assets/projects/06/35-png.webp",
+        "width": 1733,
+        "height": 1122
+      },
+      {
+        "src": "assets/projects/06/36-png.webp",
+        "width": 1733,
+        "height": 1122
+      },
+      {
+        "src": "assets/projects/06/37-png.webp",
+        "width": 2400,
+        "height": 1600
+      },
+      {
+        "src": "assets/projects/06/43-jpg.webp",
+        "width": 2400,
+        "height": 1200
+      },
+      {
+        "src": "assets/projects/06/44-jpg.webp",
+        "width": 2400,
+        "height": 1200
+      }
+    ],
+    "frames": [
+      "assets/projects/06/24-jpg.webp",
+      "assets/projects/06/25-jpg.webp",
+      "assets/projects/06/28-png.webp",
+      "assets/projects/06/32-jpg.webp",
+      "assets/projects/06/33-png.webp",
+      "assets/projects/06/34-png.webp",
+      "assets/projects/06/35-png.webp",
+      "assets/projects/06/36-png.webp",
+      "assets/projects/06/37-png.webp",
+      "assets/projects/06/43-jpg.webp",
+      "assets/projects/06/44-jpg.webp"
+    ]
+  },
+  {
+    "title": "Indoor Mountain Biking Center",
+    "year": "2021",
+    "field": "ARCHITECTURE / 3RD YEAR STUDIO",
+    "short": "The Mountain Biking Center provides an outdoor-like experience in an urban context. The building itself uses the undulating pattern of its trails to guide the form of its mass. Space is allotted for repair, rental, and locker space for bikers. A second floor incorporates a BMX park and seating overlooking the mountain biking trails below.",
+    "description": "Circulation through the trails follows the shape of the building facade. A “Pit stop” is created along the trails creating easy entry and exit from the trails.",
+    "credits": "3rd Year Studio · Fall 2021 · Instructor: Camille Yu · Austin, Chicago",
+    "subtitle": "Trails in an Urban Environment",
+    "images": [
+      {
+        "src": "assets/projects/07/45-jpg.webp",
+        "width": 2400,
+        "height": 1350
+      },
+      {
+        "src": "assets/projects/07/46-jpg.webp",
+        "width": 2400,
+        "height": 1280
+      },
+      {
+        "src": "assets/projects/07/47-png.webp",
+        "width": 1426,
+        "height": 1426
+      },
+      {
+        "src": "assets/projects/07/48-jpg.webp",
+        "width": 2400,
+        "height": 2400
+      },
+      {
+        "src": "assets/projects/07/49-jpg.webp",
+        "width": 1378,
+        "height": 2067
+      },
+      {
+        "src": "assets/projects/07/50-png.webp",
+        "width": 1378,
+        "height": 2067
+      },
+      {
+        "src": "assets/projects/07/51-jpg.webp",
+        "width": 2400,
+        "height": 1350
+      },
+      {
+        "src": "assets/projects/07/51-png.webp",
+        "width": 1033,
+        "height": 1738
+      },
+      {
+        "src": "assets/projects/07/52-jpg.webp",
+        "width": 2400,
+        "height": 1529
+      },
+      {
+        "src": "assets/projects/07/53-jpg.webp",
+        "width": 1800,
+        "height": 2400
+      },
+      {
+        "src": "assets/projects/07/54-jpg.webp",
+        "width": 1800,
+        "height": 2400
+      },
+      {
+        "src": "assets/projects/07/55-jpg.webp",
+        "width": 2400,
+        "height": 1530
+      },
+      {
+        "src": "assets/projects/07/56-jpg.webp",
+        "width": 2400,
+        "height": 1532
+      }
+    ],
+    "frames": [
+      "assets/projects/07/45-jpg.webp",
+      "assets/projects/07/46-jpg.webp",
+      "assets/projects/07/47-png.webp",
+      "assets/projects/07/48-jpg.webp",
+      "assets/projects/07/49-jpg.webp",
+      "assets/projects/07/50-png.webp",
+      "assets/projects/07/51-jpg.webp",
+      "assets/projects/07/51-png.webp",
+      "assets/projects/07/52-jpg.webp",
+      "assets/projects/07/53-jpg.webp",
+      "assets/projects/07/54-jpg.webp",
+      "assets/projects/07/55-jpg.webp",
+      "assets/projects/07/56-jpg.webp"
+    ]
+  }
 ];
 
 const viewport = document.querySelector('#viewport');
@@ -54,11 +579,7 @@ projects.forEach((project, index) => {
     </div>
     <section id="detail-${index}" class="project-reveal" hidden inert aria-label="Project images and notes: ${project.title}">
       <div class="project-scroll" tabindex="0" aria-label="Scroll vertically through ${project.title}">
-        <figure class="project-lead"><img src="${project.loop}" alt="Placeholder animated studies for ${project.title}"><figcaption>${project.year} / ${project.field}</figcaption></figure>
-        <figure><img src="${project.frames[0]}" alt="Placeholder artwork for ${project.title}"><figcaption>01 / PROJECT DOCUMENTATION</figcaption></figure>
-        <p class="detail-note">Project description, process notes, drawings, and photographs go here. This lower section scrolls while the number, title, and introduction remain visible.</p>
-        <figure><img src="${project.frames[1]}" alt="Placeholder schematic study for ${project.title}"><figcaption>02 / SCHEMATIC STUDY</figcaption></figure>
-        <figure><img src="${project.frames[0]}" alt="Additional placeholder documentation for ${project.title}"><figcaption>03 / ADDITIONAL DOCUMENTATION</figcaption></figure>
+        ${project.images.map((image, imageIndex) => `<figure class="${imageIndex === 0 ? "project-lead" : ""}"><img src="${image.src}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async" alt="${project.title} — project image ${imageIndex + 1}"></figure>${imageIndex === 0 ? `<p class="detail-note project-credits">${project.year} / ${project.field}<br>${project.credits}</p>${project.subtitle ? `<p class="detail-note">${project.subtitle}</p>` : ""}<p class="detail-note">${project.description}</p>` : ""}`).join("")}
         <p class="detail-note">END OF PROJECT / ${number}</p>
       </div>
     </section>`;

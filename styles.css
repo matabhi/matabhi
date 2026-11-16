@@ -108,7 +108,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   font-size:var(--type-body);
   line-height:1.4;
   font-weight:500;
-  white-space:nowrap;
+  white-space:normal;
   overflow:hidden;
   visibility:hidden;
   pointer-events:none;
@@ -196,7 +196,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   .ending {width:75vw}
 }
 @media(prefers-reduced-motion:reduce) {
-  .project,.project-copy,.project-reveal {transition:none!important}
+  .project,.project-copy,.project-title,.project-reveal {transition:none!important}
   .project-title.typing::after {display:none}
 }
 
