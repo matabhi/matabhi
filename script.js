@@ -536,7 +536,8 @@ const projects = [
             "width": 709,
             "height": 615
           }
-        ]
+        ],
+        "gap": true
       },
       {
         "layout": "row",
