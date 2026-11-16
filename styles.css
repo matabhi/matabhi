@@ -231,3 +231,5 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 
 /* Extra breathing room at the seam between the final project and introduction. */
 #project-7 {margin-right:clamp(80px,10vw,160px)}
+
+.project.is-active .excerpt {cursor:pointer}

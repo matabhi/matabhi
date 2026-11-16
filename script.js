@@ -973,12 +973,12 @@ projects.forEach((project, index) => {
   excerpt.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      if (node.dataset.expanded !== 'true') toggle(index);
+      toggle(index);
     }
   });
   numberButton.addEventListener('click', () => toggle(index));
   summary.addEventListener('click', () => {
-    if (node.dataset.expanded !== 'true') toggle(index);
+    toggle(index);
   });
 
   // Instant unstyled image preview on number OR description, not the heading.
