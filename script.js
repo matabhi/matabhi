@@ -320,7 +320,8 @@ const projects = [
             "width": 914,
             "height": 1714
           }
-        ]
+        ],
+        "half": true
       },
       {
         "layout": "single",
