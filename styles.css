@@ -221,8 +221,10 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 .gallery-row.gallery-gap {gap:24px}
 
 .animated-ellipsis {display:inline-block;white-space:nowrap}
-.animated-ellipsis span:nth-child(2) {animation:ellipsis-second 1.5s steps(1,end) infinite}
-.animated-ellipsis span:nth-child(3) {animation:ellipsis-third 1.5s steps(1,end) infinite}
-@keyframes ellipsis-second {0% {opacity:0} 33.333%,100% {opacity:1}}
-@keyframes ellipsis-third {0%,33.333% {opacity:0} 66.666%,100% {opacity:1}}
+.animated-ellipsis span:nth-child(1) {animation:ellipsis-first 2s steps(1,end) infinite}
+.animated-ellipsis span:nth-child(2) {animation:ellipsis-second 2s steps(1,end) infinite}
+.animated-ellipsis span:nth-child(3) {animation:ellipsis-third 2s steps(1,end) infinite}
+@keyframes ellipsis-first {0% {opacity:1} 75%,100% {opacity:0}}
+@keyframes ellipsis-second {0% {opacity:0} 25% {opacity:1} 75%,100% {opacity:0}}
+@keyframes ellipsis-third {0% {opacity:0} 50% {opacity:1} 75%,100% {opacity:0}}
 @media(prefers-reduced-motion:reduce) {.animated-ellipsis span {animation:none!important}}
