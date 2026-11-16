@@ -530,6 +530,37 @@ const projects = [
       "assets/projects/07/55-jpg.webp",
       "assets/projects/07/56-jpg.webp"
     ]
+  },
+  {
+    "title": "Norway Travel Map",
+    "year": "2022",
+    "field": "LANDSCAPE / STUDY ABROAD",
+    "short": "This project was done for the summer study abroad trip to Norway. Copper wire maps out the path between the cities of Bergen and Stavanger to scale. The shape of the wire hints at Norway’s unique landscape, requiring different modes of transportation to traverse. The journeys on ferries and cars are recorded through the wire.",
+    "description": "Tags are attached in particular areas that mark the distance traveled from Stavanger, as well as the time when that point was reached.",
+    "credits": "4th Year Study Abroad · Summer 2022 · Instructors: Leslie Johnson, Lukasz Kowalczyk",
+    "subtitle": "Studying Landscape Through Movement",
+    "images": [
+      {
+        "src": "assets/projects/08/1.webp",
+        "width": 1600,
+        "height": 1964
+      },
+      {
+        "src": "assets/projects/08/2.webp",
+        "width": 1667,
+        "height": 1965
+      },
+      {
+        "src": "assets/projects/08/3.webp",
+        "width": 2400,
+        "height": 796
+      }
+    ],
+    "frames": [
+      "assets/projects/08/1.webp",
+      "assets/projects/08/2.webp",
+      "assets/projects/08/3.webp"
+    ]
   }
 ];
 
