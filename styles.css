@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 /* Portfolio 08 — fixed project introductions and independently scrolling images. */
 :root {
   --paper:#f6f5f0;
@@ -16,7 +18,7 @@
 }
 * {box-sizing:border-box}
 html,body {margin:0;width:100%;height:100%;overflow:hidden}
-body {background:var(--paper);color:var(--ink);font:var(--type-body)/1.43 Arial,Helvetica,sans-serif}
+body {background:var(--paper);color:var(--ink);font:500 var(--type-body)/1.43 'Montserrat',sans-serif}
 button {font:inherit;color:inherit;cursor:pointer}
 button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
 #viewport {
@@ -36,7 +38,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   padding-right:clamp(20px,3vw,48px);
 }
 .intro-index,.intro-directions,.project-number,.project-scroll figcaption,
-.footer button,.percent,.about-close,.ending span {font-family:'Courier New',monospace;letter-spacing:-.025em}
+.footer button,.percent,.about-close,.ending span {font-family:'Montserrat',sans-serif;letter-spacing:-.025em}
 .intro-index {margin-bottom:28px}
 .opening p {font-size:var(--type-large);line-height:1.16;letter-spacing:-.055em;margin:0}
 .intro-directions {margin-top:35px;color:var(--soft)}
@@ -105,7 +107,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   margin:0;
   font-size:var(--type-body);
   line-height:1.4;
-  font-weight:600;
+  font-weight:500;
   white-space:nowrap;
   overflow:hidden;
   visibility:hidden;
@@ -160,7 +162,7 @@ button:focus-visible {outline:2px solid var(--red);outline-offset:4px}
   background:var(--paper);z-index:10;
 }
 .footer button {border:0;background:transparent;padding:7px 0;white-space:nowrap;font-size:var(--type-body)}
-.name {font-weight:bold}
+.name {font-weight:500}
 .about-toggle {margin-right:20px}
 .footer button:hover {text-decoration:underline}
 .meter {height:1px;background:#cbc9c3;flex:1;min-width:30px;overflow:hidden}
